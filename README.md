@@ -1,25 +1,36 @@
-# program  for secret coding and decoding
-a=input('enter the word')
+# program  for secret coding and decoding language
+import string
+import random
+
+message=input('enter the word')
+words=message.split(' ')
+print(words)
+newwords=[]
+n=3
 reply = input('enter the reply for code or decode')
-# for coding a paticular word
+# for coding a paticular message
 if reply == 'code':
-    if len(a) >= 3:
-        b=a[0]
-        c= "".join([a,b])
-        d=c.replace(c[0],'abc',1)
-        e='xyz'
-        f="".join([d,e])
-        print(f)
-    else:
-        print("".join([a[-1],a[0]]))
-# for decoding a particular word        
+    for word in words:
+         if len(word) >= 3:
+             first=''.join(random.choices(string.ascii_lowercase ,k=n))
+             last=''.join(random.choices(string.ascii_lowercase ,k=n))
+             message=first+word[1:]+word[0]+last
+             newwords.append(message)
+
+         else:
+             message=word[::-1]
+             newwords.append(message)
+    print(' '.join(newwords))        
+        
+# for decoding a particular message      
 else:
-        if len(a)>=3:
-              g=a.replace('abc','',1)
-              h=g.replace('xyz','',1) 
-              i="".join([h[-1],h])
-              j=i.replace(i[-1],'',2)
-              k="".join([h[-1],j])
-              print(k)
-        else:
-              print("".join([a[-1],a[0]]))
+    
+    for word in words:
+         if len(word) >= 3:
+             message=word[3:-3]
+             message=message[-1]+message[:-1]
+             newwords.append(message)
+         else:
+             message=word[::-1]
+             newwords.append(message)
+    print(' '.join(newwords))   
