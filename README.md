@@ -4,7 +4,6 @@ import random
 
 message=input('enter the word')
 words=message.split(' ')
-print(words)
 newwords=[]
 n=3
 reply = input('enter the reply for code or decode')
